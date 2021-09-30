@@ -1,6 +1,7 @@
 ﻿Module ShuffleTheDeck
 
     Sub Main()
+        Dim cardDraw(51) As String
         For i = 0 To 50
             Console.WriteLine(DrawCard())
         Next
@@ -12,6 +13,7 @@
         Dim numberValue As Integer
         Dim suitReturn As String
         Dim numberReturn As String = 4
+
         Randomize()
         suitValue = Int((4 * Rnd()) + 0)
         numberValue = Int((13 * Rnd()) + 0)
