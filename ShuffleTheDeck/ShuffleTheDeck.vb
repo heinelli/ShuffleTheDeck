@@ -13,28 +13,27 @@ Module ShuffleTheDeck
         Dim deck(12, 3) As Boolean
         Dim value As Integer
         Dim suit As Integer
+        Dim numberReturn As String
+        Dim suitStringReturn As String
         Dim endStatement As Boolean
 
 
-        Do While endStatement = False
-            suit = CardSuit()
-            value = CardValue()
+        Do
+            suit = CardSuit(suitStringReturn)
+            value = CardValue(numberReturn)
 
-            If deck(value, suit) = True Then
-                endStatement = False
-            Else
-                Console.WriteLine("Card drawn" & suit & "," & value)
+            If deck(value, suit) = False Then
+                Console.WriteLine(numberReturn & " of " & suitStringReturn)
                 deck(value, suit) = True
-                endStatement = False
+            ElseIf deck(value, suit) = True Then
             End If
-            Console.ReadLine()
+
         Loop
 
     End Sub
 
-    Function CardSuit() As Integer
+    Function CardSuit(ByRef suitStringReturn As String) As Integer
         Dim suitValue As Integer
-        Dim suitStringReturn As String
         Dim suitIntegerReturn As Integer
 
         Randomize()
@@ -56,10 +55,9 @@ Module ShuffleTheDeck
         Return suitIntegerReturn
     End Function
 
-    Function CardValue() As Integer
+    Function CardValue(ByRef numberReturn As String) As Integer
         Dim numberValue As Integer
         Dim valueReturn As Integer
-        Dim numberReturn As String
 
         numberValue = CInt((13 * Rnd()) + 0)
 
