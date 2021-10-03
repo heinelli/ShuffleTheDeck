@@ -1,18 +1,24 @@
-﻿Module ShuffleTheDeck
+﻿'Elliot Heiner
+'RCET 0265
+'Fall 2021
+'Shuffle the Deck
+'
+
+Option Strict On
+Option Explicit On
+
+Module ShuffleTheDeck
 
     Sub Main()
-        Dim cardDraw(51) As String
-        For i = 0 To 50
-            Console.WriteLine(DrawCard())
-        Next
-        Console.Read()
+        Dim deck(12, 3) As Integer
+
     End Sub
 
     Function DrawCard()
         Dim suitValue As Integer
         Dim numberValue As Integer
         Dim suitReturn As String
-        Dim numberReturn As String = 4
+        Dim numberReturn As String
 
         Randomize()
         suitValue = Int((4 * Rnd()) + 0)
