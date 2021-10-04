@@ -17,20 +17,48 @@ Module ShuffleTheDeck
         Dim suitStringReturn As String
         Dim endStatement As Boolean
 
+        For i = 0 To 52
 
-        Do
             suit = CardSuit(suitStringReturn)
             value = CardValue(numberReturn)
-
-            If deck(value, suit) = False Then
+            If deck(value, suit) = True Then
+                CardSuit(suitStringReturn)
+                CardValue(numberReturn)
+            ElseIf deck(value, suit) = False Then
                 Console.WriteLine(numberReturn & " of " & suitStringReturn)
                 deck(value, suit) = True
-            ElseIf deck(value, suit) = True Then
             End If
 
-        Loop
 
+
+
+        Next
+        Console.Read()
     End Sub
+
+    'Function CheckDeck(ByRef check1 As Integer, ByRef check2 As Integer) As Boolean
+    '    Dim arrayCheck(12, 3) As Boolean
+    '    Dim endStatement As Boolean
+    '    Dim answer As Boolean = False
+
+
+    '    'If deck(value, suit) = False Then
+    '    'Console.WriteLine(numberReturn & " of " & suitStringReturn)
+    '    'deck(value, suit) = True
+    '    'E 'lseIf deck(value, suit) = True Then
+    '    'En 'd If
+    '    Do While endStatement = False
+
+    '        If arrayCheck(check1, check2) = False Then
+    '            arrayCheck(check1, check2) = True
+    '            answer = True
+    '            endStatement = True
+    '        ElseIf arrayCheck(check1, check2) = True Then
+    '            endStatement = False
+    '        End If
+    '    Loop
+    '    Return answer
+    'End Function
 
     Function CardSuit(ByRef suitStringReturn As String) As Integer
         Dim suitValue As Integer
