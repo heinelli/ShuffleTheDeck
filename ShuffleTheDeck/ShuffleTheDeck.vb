@@ -11,7 +11,6 @@ Option Compare Text
 Module ShuffleTheDeck
     Sub Main()
         Dim deck(12, 3) As Boolean
-        Dim clear(12, 3) As Boolean
         Dim value As Integer
         Dim suit As Integer
         Dim numberReturn As String
