@@ -2,14 +2,13 @@
 'RCET 0265
 'Fall 2021
 'Shuffle the Deck
-'
+'https://github.com/heinelli/ShuffleTheDeck.git
 
 Option Strict On
 Option Explicit On
 Option Compare Text
 
 Module ShuffleTheDeck
-
     Sub Main()
         Dim deck(12, 3) As Boolean
         Dim clear(12, 3) As Boolean
@@ -22,14 +21,13 @@ Module ShuffleTheDeck
         Dim input As String
         Dim shuffle As Boolean
 
-        Console.WriteLine("Press ENTER to draw a card. Press S to reshuffle the deck.")
+        Console.WriteLine("Press ENTER to draw a card.
+Press S to reshuffle the deck.")
         Console.ReadLine()
         Do
             Do While endStatement = False
                 suit = CardSuit(suitStringReturn)
                 value = CardValue(numberReturn)
-
-
 
                 If input = "s" Then
                     endStatement = True
@@ -42,7 +40,6 @@ Module ShuffleTheDeck
                             Do Until deck(value, suit) = False
                                 suit = CardSuit(suitStringReturn)
                                 value = CardValue(numberReturn)
-
                             Loop
                             deck(value, suit) = True
                             cardCount += 1
@@ -55,7 +52,8 @@ Module ShuffleTheDeck
 
 
                 ElseIf deck(value, suit) = False Then
-                    Console.WriteLine(numberReturn & " of " & suitStringReturn & "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
+                    Console.WriteLine(numberReturn & " of " & suitStringReturn &
+                                      "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
                     deck(value, suit) = True
                     cardCount += 1
                     endStatement = False
@@ -63,9 +61,9 @@ Module ShuffleTheDeck
                     Do Until deck(value, suit) = False
                         suit = CardSuit(suitStringReturn)
                         value = CardValue(numberReturn)
-
                     Loop
-                    Console.WriteLine(numberReturn & " of " & suitStringReturn & "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
+                    Console.WriteLine(numberReturn & " of " & suitStringReturn &
+                                      "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
                     deck(value, suit) = True
                     cardCount += 1
                     endStatement = False
@@ -73,16 +71,14 @@ Module ShuffleTheDeck
                     endStatement = True
                 End If
                 input = Console.ReadLine()
-
             Loop
 
             cardCount = 0
             endStatement = False
+
             Do While endStatement = False
                 suit = CardSuit(suitStringReturn)
                 value = CardValue(numberReturn)
-
-
 
                 If deck(value, suit) = True Then
                     deck(value, suit) = False
