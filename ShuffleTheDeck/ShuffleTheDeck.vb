@@ -6,6 +6,7 @@
 
 Option Strict On
 Option Explicit On
+Option Compare Text
 
 Module ShuffleTheDeck
 
@@ -18,96 +19,96 @@ Module ShuffleTheDeck
         Dim suitStringReturn As String
         Dim endStatement As Boolean
         Dim cardCount As Integer
+        Dim input As String
+        Dim shuffle As Boolean
 
-
-        Do While endStatement = False
-            suit = CardSuit(suitStringReturn)
-            value = CardValue(numberReturn)
-
-
-
-            If deck(value, suit) = False Then
-                Console.Write(numberReturn & " of " & suitStringReturn)
-                deck(value, suit) = True
-                cardCount += 1
-                Console.WriteLine(cardCount)
-                endStatement = False
-            ElseIf deck(value, suit) = True And cardCount <> 52 Then
-                Do Until deck(value, suit) = False
-                    suit = CardSuit(suitStringReturn)
-                    value = CardValue(numberReturn)
-
-                Loop
-                Console.Write(numberReturn & " of " & suitStringReturn)
-                deck(value, suit) = True
-                cardCount += 1
-                Console.WriteLine(cardCount)
-                endStatement = False
-            Else
-                endStatement = True
-            End If
-            Console.ReadLine()
-        Loop
-        cardCount = 0
-        endStatement = False
-        Do While endStatement = False
-            suit = CardSuit(suitStringReturn)
-            value = CardValue(numberReturn)
-
-
-
-            If deck(value, suit) = True Then
-                deck(value, suit) = False
-                cardCount += 1
-                endStatement = False
-            ElseIf deck(value, suit) = False And cardCount <> 52 Then
-                Do Until deck(value, suit) = True
-                    suit = CardSuit(suitStringReturn)
-                    value = CardValue(numberReturn)
-                Loop
-                deck(value, suit) = False
-                cardCount += 1
-                endStatement = False
-            Else
-                endStatement = True
-            End If
-        Loop
-
-        cardCount = 0
-        endStatement = False
-        Console.WriteLine("Deck shuffled")
-        Console.WriteLine()
+        Console.WriteLine("Press ENTER to draw a card. Press S to reshuffle the deck.")
         Console.ReadLine()
+        Do
+            Do While endStatement = False
+                suit = CardSuit(suitStringReturn)
+                value = CardValue(numberReturn)
 
-        Do While endStatement = False
-            suit = CardSuit(suitStringReturn)
-            value = CardValue(numberReturn)
+
+
+                If input = "s" Then
+                    endStatement = True
+                    Do Until shuffle = True
+                        If deck(value, suit) = False Then
+                            deck(value, suit) = True
+                            cardCount += 1
+                            shuffle = False
+                        ElseIf deck(value, suit) = True And cardCount <> 52 Then
+                            Do Until deck(value, suit) = False
+                                suit = CardSuit(suitStringReturn)
+                                value = CardValue(numberReturn)
+
+                            Loop
+                            deck(value, suit) = True
+                            cardCount += 1
+                            shuffle = False
+                        Else
+                            shuffle = True
+                        End If
+                    Loop
 
 
 
-            If deck(value, suit) = False Then
-                Console.Write(numberReturn & " of " & suitStringReturn)
-                deck(value, suit) = True
-                cardCount += 1
-                Console.WriteLine(cardCount)
-                endStatement = False
-            ElseIf deck(value, suit) = True And cardCount <> 52 Then
-                Do Until deck(value, suit) = False
-                    suit = CardSuit(suitStringReturn)
-                    value = CardValue(numberReturn)
+                ElseIf deck(value, suit) = False Then
+                    Console.Write(numberReturn & " of " & suitStringReturn)
+                    deck(value, suit) = True
+                    cardCount += 1
+                    Console.WriteLine(cardCount)
+                    endStatement = False
+                ElseIf deck(value, suit) = True And cardCount <> 52 Then
+                    Do Until deck(value, suit) = False
+                        suit = CardSuit(suitStringReturn)
+                        value = CardValue(numberReturn)
 
-                Loop
-                Console.Write(numberReturn & " of " & suitStringReturn)
-                deck(value, suit) = True
-                cardCount += 1
-                Console.WriteLine(cardCount)
-                endStatement = False
-            Else
-                endStatement = True
-            End If
+                    Loop
+                    Console.Write(numberReturn & " of " & suitStringReturn)
+                    deck(value, suit) = True
+                    cardCount += 1
+                    Console.WriteLine(cardCount)
+                    endStatement = False
+                Else
+                    endStatement = True
+                End If
+                input = Console.ReadLine()
+
+            Loop
+
+            cardCount = 0
+            endStatement = False
+            Do While endStatement = False
+                suit = CardSuit(suitStringReturn)
+                value = CardValue(numberReturn)
+
+
+
+                If deck(value, suit) = True Then
+                    deck(value, suit) = False
+                    cardCount += 1
+                    endStatement = False
+                ElseIf deck(value, suit) = False And cardCount <> 52 Then
+                    Do Until deck(value, suit) = True
+                        suit = CardSuit(suitStringReturn)
+                        value = CardValue(numberReturn)
+                    Loop
+                    deck(value, suit) = False
+                    cardCount += 1
+                    endStatement = False
+                Else
+                    endStatement = True
+                End If
+            Loop
+
+            cardCount = 0
+            endStatement = False
+            Console.WriteLine("Deck shuffled")
+            shuffle = False
             Console.ReadLine()
         Loop
-        Console.Read()
 
     End Sub
 
