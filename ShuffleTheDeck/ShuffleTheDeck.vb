@@ -33,27 +33,23 @@ Module ShuffleTheDeck
                 Console.WriteLine(cardCount)
                 endStatement = False
             ElseIf deck(value, suit) = True And cardCount <> 52 Then
+                Do Until deck(value, suit) = False
+                    suit = CardSuit(suitStringReturn)
+                    value = CardValue(numberReturn)
+
+                Loop
+                Console.Write(numberReturn & " of " & suitStringReturn)
+                deck(value, suit) = True
+                cardCount += 1
+                Console.WriteLine(cardCount)
                 endStatement = False
             Else
                 endStatement = True
             End If
+            Console.ReadLine()
         Loop
         Console.Read()
-        Console.WriteLine()
-        deck(12, 3) = clear(12, 3)
 
-        'Do While endStatement = False
-        '    suit = CardSuit(suitStringReturn)
-        '    value = CardValue(numberReturn)
-
-        '    If deck(value, suit) = False Then
-        '        Console.WriteLine(numberReturn & " of " & suitStringReturn)
-        '        deck(value, suit) = True
-        '        endStatement = False
-        '    ElseIf deck(value, suit) = True Then
-        '        endStatement = False
-        '    End If
-        'Loop
     End Sub
 
     Function CardSuit(ByRef suitStringReturn As String) As Integer
