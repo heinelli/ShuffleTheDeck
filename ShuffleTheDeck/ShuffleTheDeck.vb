@@ -96,21 +96,18 @@ Press S to reshuffle the deck.")
                     endStatement = True
                 End If
             Loop
-
             cardCount = 0
             endStatement = False
             Console.WriteLine("Deck shuffled")
             shuffle = False
             Console.ReadLine()
         Loop
-
     End Sub
 
     'Generate a random suit
     Function CardSuit(ByRef suitStringReturn As String) As Integer
         Dim suitValue As Integer
         Dim suitIntegerReturn As Integer
-
         Randomize()
         suitValue = CInt(System.Math.Floor(Rnd() * (3 + 1)))
 
@@ -134,8 +131,8 @@ Press S to reshuffle the deck.")
     Function CardValue(ByRef numberReturn As String) As Integer
         Dim numberValue As Integer
         Dim valueReturn As Integer
-
         numberValue = CInt(System.Math.Floor(Rnd() * (12 + 1)))
+
         If numberValue = 0 Then
             numberReturn = "Ace"
             valueReturn = 0
@@ -178,5 +175,4 @@ Press S to reshuffle the deck.")
         End If
         Return valueReturn
     End Function
-
 End Module
