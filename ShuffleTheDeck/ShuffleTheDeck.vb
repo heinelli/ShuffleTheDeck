@@ -48,6 +48,65 @@ Module ShuffleTheDeck
             End If
             Console.ReadLine()
         Loop
+        cardCount = 0
+        endStatement = False
+        Do While endStatement = False
+            suit = CardSuit(suitStringReturn)
+            value = CardValue(numberReturn)
+
+
+
+            If deck(value, suit) = True Then
+                deck(value, suit) = False
+                cardCount += 1
+                endStatement = False
+            ElseIf deck(value, suit) = False And cardCount <> 52 Then
+                Do Until deck(value, suit) = True
+                    suit = CardSuit(suitStringReturn)
+                    value = CardValue(numberReturn)
+                Loop
+                deck(value, suit) = False
+                cardCount += 1
+                endStatement = False
+            Else
+                endStatement = True
+            End If
+        Loop
+
+        cardCount = 0
+        endStatement = False
+        Console.WriteLine("Deck shuffled")
+        Console.WriteLine()
+        Console.ReadLine()
+
+        Do While endStatement = False
+            suit = CardSuit(suitStringReturn)
+            value = CardValue(numberReturn)
+
+
+
+            If deck(value, suit) = False Then
+                Console.Write(numberReturn & " of " & suitStringReturn)
+                deck(value, suit) = True
+                cardCount += 1
+                Console.WriteLine(cardCount)
+                endStatement = False
+            ElseIf deck(value, suit) = True And cardCount <> 52 Then
+                Do Until deck(value, suit) = False
+                    suit = CardSuit(suitStringReturn)
+                    value = CardValue(numberReturn)
+
+                Loop
+                Console.Write(numberReturn & " of " & suitStringReturn)
+                deck(value, suit) = True
+                cardCount += 1
+                Console.WriteLine(cardCount)
+                endStatement = False
+            Else
+                endStatement = True
+            End If
+            Console.ReadLine()
+        Loop
         Console.Read()
 
     End Sub
