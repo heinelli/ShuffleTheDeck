@@ -55,10 +55,9 @@ Module ShuffleTheDeck
 
 
                 ElseIf deck(value, suit) = False Then
-                    Console.Write(numberReturn & " of " & suitStringReturn)
+                    Console.WriteLine(numberReturn & " of " & suitStringReturn & "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
                     deck(value, suit) = True
                     cardCount += 1
-                    Console.WriteLine(cardCount)
                     endStatement = False
                 ElseIf deck(value, suit) = True And cardCount <> 52 Then
                     Do Until deck(value, suit) = False
@@ -66,10 +65,9 @@ Module ShuffleTheDeck
                         value = CardValue(numberReturn)
 
                     Loop
-                    Console.Write(numberReturn & " of " & suitStringReturn)
+                    Console.WriteLine(numberReturn & " of " & suitStringReturn & "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
                     deck(value, suit) = True
                     cardCount += 1
-                    Console.WriteLine(cardCount)
                     endStatement = False
                 Else
                     endStatement = True
