@@ -24,11 +24,14 @@ Module ShuffleTheDeck
         Console.WriteLine("Press ENTER to draw a card.
 Press S to reshuffle the deck.")
         Console.ReadLine()
+
+        'Repeat card dealings until user exits program.
         Do
             Do While endStatement = False
                 suit = CardSuit(suitStringReturn)
                 value = CardValue(numberReturn)
 
+                'Shuffle deck if S is typed.
                 If input = "s" Then
                     endStatement = True
                     Do Until shuffle = True
@@ -49,11 +52,9 @@ Press S to reshuffle the deck.")
                         End If
                     Loop
 
-
-
+                    'Search for and label each card as true to signify that it has been dealt
                 ElseIf deck(value, suit) = False Then
-                    Console.WriteLine(numberReturn & " of " & suitStringReturn &
-                                      "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
+                    Console.WriteLine(numberReturn & " of " & suitStringReturn)
                     deck(value, suit) = True
                     cardCount += 1
                     endStatement = False
@@ -62,8 +63,7 @@ Press S to reshuffle the deck.")
                         suit = CardSuit(suitStringReturn)
                         value = CardValue(numberReturn)
                     Loop
-                    Console.WriteLine(numberReturn & " of " & suitStringReturn &
-                                      "Cards remaining:".PadLeft(25) & CStr(51 - cardCount))
+                    Console.WriteLine(numberReturn & " of " & suitStringReturn)
                     deck(value, suit) = True
                     cardCount += 1
                     endStatement = False
@@ -73,9 +73,9 @@ Press S to reshuffle the deck.")
                 input = Console.ReadLine()
             Loop
 
+            'Reset card count and shuffle the deck by setting all elements equal to false.
             cardCount = 0
             endStatement = False
-
             Do While endStatement = False
                 suit = CardSuit(suitStringReturn)
                 value = CardValue(numberReturn)
@@ -106,6 +106,7 @@ Press S to reshuffle the deck.")
 
     End Sub
 
+    'Generate a random suit
     Function CardSuit(ByRef suitStringReturn As String) As Integer
         Dim suitValue As Integer
         Dim suitIntegerReturn As Integer
@@ -129,6 +130,7 @@ Press S to reshuffle the deck.")
         Return suitIntegerReturn
     End Function
 
+    'Generate a random value
     Function CardValue(ByRef numberReturn As String) As Integer
         Dim numberValue As Integer
         Dim valueReturn As Integer
